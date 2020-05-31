@@ -113,11 +113,6 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
         <li class="menu-item menu-item-tags">
 
     <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
@@ -156,6 +151,79 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/31/%E9%83%A8%E7%BD%B2Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/31/%E9%83%A8%E7%BD%B2Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">部署Hexo遇到的坑</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-31 15:40:29 / 修改时间：15:56:30" itemprop="dateCreated datePublished" datetime="2020-05-31T15:40:29+08:00">2020-05-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h2><p>一定要选择LTS长期支持的稳定版</p>
+<h2 id="安装npm"><a href="#安装npm" class="headerlink" title="安装npm"></a>安装npm</h2><p>Hexo的<br>由于默认的npm镜像在国外，速度感人，甚至会终端长时间无响应，因此需要更换npm镜像源</p>
+<p>一般使用淘宝镜像，办法有两种</p>
+<h3 id="1、创建一个全局新镜像命令"><a href="#1、创建一个全局新镜像命令" class="headerlink" title="1、创建一个全局新镜像命令"></a>1、创建一个全局新镜像命令</h3><p>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>⚠️ 这里有一个坑，在之后Hexo init时，依然使用了原npm，依然会导致安装缓慢</p>
+<h3 id="2、替换原npm镜像配置"><a href="#2、替换原npm镜像配置" class="headerlink" title="2、替换原npm镜像配置"></a>2、替换原npm镜像配置</h3><p>npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>推荐使用此方法</p>
+<h2 id="Hexo-init"><a href="#Hexo-init" class="headerlink" title="Hexo init"></a>Hexo init</h2><p>如果遇到初始化失败，需要删除整个Blog，重新init</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -305,7 +373,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
