@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="分离Interface和Implementation文件   section 文件后缀 import    类申明(@interface section) class.h import &lt;Foundation&#x2F;Foundation.h&gt;   类实施(@implementation section) class.m import “class.h” (引入local file)   主程">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C基础入门（类）">
 <meta property="og:url" content="http://yoursite.com/2020/06/11/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E7%B1%BB%EF%BC%89/index.html">
 <meta property="og:site_name" content="Abnerの技术小栈">
+<meta property="og:description" content="分离Interface和Implementation文件   section 文件后缀 import    类申明(@interface section) class.h import &lt;Foundation&#x2F;Foundation.h&gt;   类实施(@implementation section) class.m import “class.h” (引入local file)   主程">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-11T10:47:30.000Z">
-<meta property="article:modified_time" content="2020-06-11T10:49:50.335Z">
+<meta property="article:modified_time" content="2020-06-16T14:01:45.760Z">
 <meta property="article:author" content="Gaoxiang Zhang">
 <meta property="article:tag" content="Objective-C">
 <meta name="twitter:card" content="summary">
@@ -181,10 +183,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-06-11 18:47:30 / 修改时间：18:49:50" itemprop="dateCreated datePublished" datetime="2020-06-11T18:47:30+08:00">2020-06-11</time>
+              <time title="创建时间：2020-06-11 18:47:30" itemprop="dateCreated datePublished" datetime="2020-06-11T18:47:30+08:00">2020-06-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-16 22:01:45" itemprop="dateModified" datetime="2020-06-16T22:01:45+08:00">2020-06-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -206,7 +214,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="分离Interface和Implementation文件"><a href="#分离Interface和Implementation文件" class="headerlink" title="分离Interface和Implementation文件"></a>分离Interface和Implementation文件</h1><table>
+<thead>
+<tr>
+<th>section</th>
+<th>文件后缀</th>
+<th>import</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类申明(@interface section)</td>
+<td>class.h</td>
+<td>import &lt;Foundation/Foundation.h&gt;</td>
+</tr>
+<tr>
+<td>类实施(@implementation section)</td>
+<td>class.m</td>
+<td>import “class.h” (引入local file)</td>
+</tr>
+<tr>
+<td>主程序(main program section)</td>
+<td>main.m</td>
+<td>import “class.h” (只需要@interface就够了)</td>
+</tr>
+</tbody></table>
+<p>可以把 @interface 看作 public information<br>可以把@implementation 看作 private information</p>
+<h1 id="合成访问方法"><a href="#合成访问方法" class="headerlink" title="合成访问方法"></a>合成访问方法</h1><p>自动生成setter和getter方法<br>在interface中申明：@property + 实例变量名<br>在implementation中自动合成：@synthesize + 实例变量名 (现在不需要再申明实例变量了)<br>⚠️ 若在implementation中不使用@synthesize，系统会自动生成带有_的实例变量，如_numerator</p>
+<h1 id="使用点操作符访问属性"><a href="#使用点操作符访问属性" class="headerlink" title="使用点操作符访问属性"></a>使用点操作符访问属性</h1><p>之前学习过访问实例的某个方法如下：<br>[instance property]</p>
+<p>现在也可以用点操作符表示<br>instance.property</p>
+<p>原本的[instance setProperty: value] 等价于 instance.property = value</p>
+<h1 id="多个参数的方法"><a href="#多个参数的方法" class="headerlink" title="多个参数的方法"></a>多个参数的方法</h1><p>@interface</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-(void) setTo: (int) n over: (int) d;</span><br></pre></td></tr></table></figure>
+
+<p>@implementation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-(void) setTo: (int) n over: (int) d &#123;</span><br><span class="line">    numerator &#x3D; n;</span><br><span class="line">    denominator &#x3D; d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>program section</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[aFraction setTo: 100 over: 200]</span><br></pre></td></tr></table></figure>
+
+<p>无参数名方法：外部参数名都可省略，如：<br><code>- (int) set: (int) n: (int) d;</code><br><code>[aFraction set:1 :3]</code><br>但不推荐，因为这样可读性很差</p>
+<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static关键字声明的变量必须放在implementation外面，或者方法中，如果不为它赋值默认为0，它只在程序开机初始化一次，之后会储存维护一个值</p>
+<p>声明后的static静态变量在其他类中是不能通过类名直接访问的，它的作用域只能是在声明的这个.m文件中</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@implementation MyClass</span><br><span class="line"></span><br><span class="line">+ (void)addCount &#123;</span><br><span class="line">    static NSInteger count &#x3D; 100;</span><br><span class="line">    count ++;</span><br><span class="line">    NSLog(@&quot;static value is %ld&quot;, (long)count);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>其输出结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2015-12-07 17:41:33.397 StaticDemo[80984:2870442] static value is 101</span><br><span class="line">2015-12-07 17:41:33.398 StaticDemo[80984:2870442] static value is 102</span><br><span class="line">2015-12-07 17:41:33.398 StaticDemo[80984:2870442] static value is 103</span><br><span class="line">2015-12-07 17:41:33.398 StaticDemo[80984:2870442] static value is 104</span><br><span class="line">2015-12-07 17:41:33.398 StaticDemo[80984:2870442] static value is 105</span><br></pre></td></tr></table></figure>
+
+<p>count的值是会变化的，而不是一直输出101</p>
+<h1 id="self-关键字"><a href="#self-关键字" class="headerlink" title="self 关键字"></a>self 关键字</h1><p>本章中未详细介绍，自行百度了相关学习内容：<br><a href="https://www.jianshu.com/p/1adc99ab62c2" target="_blank" rel="noopener">https://www.jianshu.com/p/1adc99ab62c2</a></p>
+
     </div>
 
     
@@ -289,6 +346,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分离Interface和Implementation文件"><span class="nav-number">1.</span> <span class="nav-text">分离Interface和Implementation文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合成访问方法"><span class="nav-number">2.</span> <span class="nav-text">合成访问方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用点操作符访问属性"><span class="nav-number">3.</span> <span class="nav-text">使用点操作符访问属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多个参数的方法"><span class="nav-number">4.</span> <span class="nav-text">多个参数的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#static-关键字"><span class="nav-number">5.</span> <span class="nav-text">static 关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#self-关键字"><span class="nav-number">6.</span> <span class="nav-text">self 关键字</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
