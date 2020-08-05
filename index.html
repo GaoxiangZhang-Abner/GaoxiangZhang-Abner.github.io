@@ -155,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/15/LeetCode.733-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/05/LeetCode.496-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0I/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -169,7 +169,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/15/LeetCode.733-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/" class="post-title-link" itemprop="url">LeetCode.733-每日温度</a>
+            <a href="/2020/08/05/LeetCode.496-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0I/" class="post-title-link" itemprop="url">LeetCode.496 - 下一个更大元素I</a>
         </h2>
 
         <div class="post-meta">
@@ -180,8 +180,169 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-15 16:45:05 / 修改时间：18:43:08" itemprop="dateCreated datePublished" datetime="2020-06-15T16:45:05+08:00">2020-06-15</time>
+              <time title="创建时间：2020-08-05 11:51:30 / 修改时间：13:08:02" itemprop="dateCreated datePublished" datetime="2020-08-05T11:51:30+08:00">2020-08-05</time>
             </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B1%82%E8%81%8C/" itemprop="url" rel="index"><span itemprop="name">求职</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定两个 没有重复元素 的数组 nums1 和 nums2 ，其中nums1 是 nums2 的子集。找到 nums1 中每个元素在 nums2 中的下一个比其大的值。</p>
+<p>nums1 中数字 x 的下一个更大元素是指 x 在 nums2 中对应位置的右边的第一个比 x 大的元素。如果不存在，对应位置输出 -1 。</p>
+<p>示例 1:</p>
+<p>输入: nums1 = [4,1,2], nums2 = [1,3,4,2].<br>输出: [-1,3,-1]<br>解释:<br>    对于num1中的数字4，你无法在第二个数组中找到下一个更大的数字，因此输出 -1。<br>    对于num1中的数字1，第二个数组中数字1右边的下一个较大数字是 3。<br>    对于num1中的数字2，第二个数组中没有下一个更大的数字，因此输出 -1。<br>示例 2:</p>
+<p>输入: nums1 = [2,4], nums2 = [1,2,3,4].<br>输出: [3,-1]<br>解释:<br>    对于 num1 中的数字 2 ，第二个数组中的下一个较大数字是 3 。<br>    对于 num1 中的数字 4 ，第二个数组中没有下一个更大的数字，因此输出 -1 。</p>
+<p>提示：</p>
+<p>nums1和nums2中所有元素是唯一的。<br>nums1和nums2 的数组大小都不超过1000。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/next-greater-element-i" target="_blank" rel="noopener">https://leetcode-cn.com/problems/next-greater-element-i</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>遍历num2，维护一个单调栈（单调递减栈）</p>
+<blockquote>
+<p>若栈为空，或者当前元素小于或等于栈顶元素，则直接入栈<br>反之，若当前元素大于栈顶元素，则说明栈顶的下一大元素已经找到了，则将栈顶元素出栈。<br>⚠️ 单调栈中存的是索引</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">        </span><br><span class="line">    func nextGreaterElement(_ nums1: [Int], _ nums2: [Int]) -&gt; [Int] &#123;</span><br><span class="line">        </span><br><span class="line">        var stack: [Int] &#x3D; [] &#x2F;&#x2F; Int是存数字在nums2的位置</span><br><span class="line">        var pairs: [Int: Int] &#x3D; [:] &#x2F;&#x2F; 存储元素&amp;元素下一大元素</span><br><span class="line">        var result: [Int] &#x3D; [] &#x2F;&#x2F; 存储下一大元素</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 1、遍历nums2，找出每个数字的对应的下一大元素，并储存为键值对pairs</span><br><span class="line">        for now in 0 ..&lt; nums2.count &#123;</span><br><span class="line">            </span><br><span class="line">            &#x2F;&#x2F; 找到下一大元素时，遍历单调栈</span><br><span class="line">            while let last &#x3D; stack.last, nums2[last] &lt; nums2[now] &#123;</span><br><span class="line">                let number &#x3D; nums2[last]</span><br><span class="line">                let numberLastBig &#x3D; nums2[now]</span><br><span class="line">                pairs[number] &#x3D; numberLastBig</span><br><span class="line">                stack.removeLast()</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            stack.append(now)</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 2、遍历nums1，将nums1作为键，在pairs中寻找其对应的值</span><br><span class="line">        for num in nums1 &#123;</span><br><span class="line">            let temp &#x3D; pairs[num] ?? -1</span><br><span class="line">            result.append(temp)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return result</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/17/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E7%BB%A7%E6%89%BF%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/17/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E7%BB%A7%E6%89%BF%EF%BC%89/" class="post-title-link" itemprop="url">Objective-C基础入门（继承）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-17 09:02:12 / 修改时间：10:15:53" itemprop="dateCreated datePublished" datetime="2020-06-17T09:02:12+08:00">2020-06-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Root、父类和子类"><a href="#Root、父类和子类" class="headerlink" title="Root、父类和子类"></a>Root、父类和子类</h1><p>一般，NSObject是我们所说的Root类<br>父类和子类的相关术语：superclass/parent class, subclass/child class<br>子类可以继承父类的非私有实例变量和方法<br>⚠️ 在父类的interface中申明，并且implementation中不申明，子类才能访问其实例变量<br>⚠️  在父类的implementation中申明或合成的实例变量，子类无法直接访问；需要用自定义的getter或setter方法来访问</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@interface ClassA: NSObject &#123;   </span><br><span class="line">    int   x; </span><br><span class="line">&#125;</span><br><span class="line">-(void) initVar; </span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ClassA </span><br><span class="line">-(void) initVar &#123;   </span><br><span class="line">    x &#x3D; 100; </span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface ClassB: ClassA &#x2F;&#x2F; ClassB继承了ClassA</span><br><span class="line">-(void) printVar; </span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ClassB </span><br><span class="line">-(void) printVar &#123;   </span><br><span class="line">    NSLog (@&quot;x &#x3D; %i&quot;, x); &#x2F;&#x2F; print x 的值，它是在ClassA中申明，ClassB中未申明的</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>OC寻找方法的机制</p>
+<blockquote>
+<p>首先，检查对象所属的类，以查看是否在该类中使用特定名称显式地定义了方法。如果是，这就是我们使用的方法。如果没有定义，则选中父类。如果这里定义了方法，就用它。如果没有，搜索仍在继续。<br>父类会被检查，直到发生以下两种情况之一:要么找到包含指定方法的类，要么在返回根类之后没有找到该方法。如果第一个发生了，一切都准备好了;如果出现第二种情况，就会出现问题，并生成如下警告消息: warning: ‘ClassB’ may not respond to ‘-inity’</p>
+</blockquote>
+<h1 id="通过继承扩展"><a href="#通过继承扩展" class="headerlink" title="通过继承扩展"></a>通过继承扩展</h1><h2 id="点类和对象分配"><a href="#点类和对象分配" class="headerlink" title="点类和对象分配"></a>点类和对象分配</h2><h2 id="class-指令"><a href="#class-指令" class="headerlink" title="@class 指令"></a>@class 指令</h2><h2 id="拥有对象的类"><a href="#拥有对象的类" class="headerlink" title="拥有对象的类"></a>拥有对象的类</h2><h1 id="override方法"><a href="#override方法" class="headerlink" title="override方法"></a>override方法</h1><h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/15/LeetCode.739%20-%20%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/15/LeetCode.739%20-%20%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/" class="post-title-link" itemprop="url">LeetCode.739 - 每日温度</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-15 16:45:05" itemprop="dateCreated datePublished" datetime="2020-06-15T16:45:05+08:00">2020-06-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-05 11:48:46" itemprop="dateModified" datetime="2020-08-05T11:48:46+08:00">2020-08-05</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -363,7 +524,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/10/LeetCode.9-%E5%9B%9E%E6%96%87%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/10/LeetCode.9%20-%20%E5%9B%9E%E6%96%87%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -377,7 +538,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/10/LeetCode.9-%E5%9B%9E%E6%96%87%E6%95%B0/" class="post-title-link" itemprop="url">LeetCode.9 - 回文数</a>
+            <a href="/2020/06/10/LeetCode.9%20-%20%E5%9B%9E%E6%96%87%E6%95%B0/" class="post-title-link" itemprop="url">LeetCode.9 - 回文数</a>
         </h2>
 
         <div class="post-meta">
@@ -907,89 +1068,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Gaoxiang Zhang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Abnerの技术小栈">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hexo搭建个人博客</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-05-31 07:23:57 / 修改时间：14:33:53" itemprop="dateCreated datePublished" datetime="2020-05-31T07:23:57+08:00">2020-05-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>欢迎来到 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! 这是我的第一篇博客.<br>Hexo文档 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> .<br>Hexo 问题反馈社区 <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a><br>Hexo github 问题反馈 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="创建一篇新博客"><a href="#创建一篇新博客" class="headerlink" title="创建一篇新博客"></a>创建一篇新博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="本地运行服务器"><a href="#本地运行服务器" class="headerlink" title="本地运行服务器"></a>本地运行服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="生成静态文档"><a href="#生成静态文档" class="headerlink" title="生成静态文档"></a>生成静态文档</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<h3 id="Hexo和Next超实用视频教程"><a href="#Hexo和Next超实用视频教程" class="headerlink" title="Hexo和Next超实用视频教程"></a>Hexo和Next超实用视频教程</h3><p>在这里要感谢搭建CodeSheep和Mackxin的视频教程，帮助我搭建Hexo和使用Next主题<br>搭建Hexo: <a href="https://www.bilibili.com/video/BV1Yb411a7ty" target="_blank" rel="noopener">CodeSheep教程</a><br>使用Next主题: <a href="https://www.bilibili.com/video/BV16W411t7mq?from=search&seid=10693601305278358285" target="_blank" rel="noopener">Mackxin教程</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1056,7 +1139,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

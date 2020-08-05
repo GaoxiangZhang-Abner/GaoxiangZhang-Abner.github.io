@@ -20,21 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="欢迎来到 Hexo! 这是我的第一篇博客.Hexo文档 documentation .Hexo 问题反馈社区 troubleshootingHexo github 问题反馈 GitHub. 快速入门创建一篇新博客1$ hexo new &quot;My New Post&quot;  更多信息: Writing 本地运行服务器1$ hexo server  更多信息: Server 生成静态文档1$ hexo gen">
+  <meta name="description" content="Root、父类和子类一般，NSObject是我们所说的Root类父类和子类的相关术语：superclass&#x2F;parent class, subclass&#x2F;child class子类可以继承父类的非私有实例变量和方法⚠️ 在父类的interface中申明，并且implementation中不申明，子类才能访问其实例变量⚠️  在父类的implementation中申明或合成的实例变量，子类无法直接访">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo搭建个人博客">
-<meta property="og:url" content="http://yoursite.com/2020/05/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:title" content="Objective-C基础入门（继承）">
+<meta property="og:url" content="http://yoursite.com/2020/06/17/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E7%BB%A7%E6%89%BF%EF%BC%89/index.html">
 <meta property="og:site_name" content="Abnerの技术小栈">
-<meta property="og:description" content="欢迎来到 Hexo! 这是我的第一篇博客.Hexo文档 documentation .Hexo 问题反馈社区 troubleshootingHexo github 问题反馈 GitHub. 快速入门创建一篇新博客1$ hexo new &quot;My New Post&quot;  更多信息: Writing 本地运行服务器1$ hexo server  更多信息: Server 生成静态文档1$ hexo gen">
+<meta property="og:description" content="Root、父类和子类一般，NSObject是我们所说的Root类父类和子类的相关术语：superclass&#x2F;parent class, subclass&#x2F;child class子类可以继承父类的非私有实例变量和方法⚠️ 在父类的interface中申明，并且implementation中不申明，子类才能访问其实例变量⚠️  在父类的implementation中申明或合成的实例变量，子类无法直接访">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-30T23:23:57.204Z">
-<meta property="article:modified_time" content="2020-05-31T06:33:53.940Z">
+<meta property="article:published_time" content="2020-06-17T01:02:12.000Z">
+<meta property="article:modified_time" content="2020-06-17T02:15:53.288Z">
 <meta property="article:author" content="Gaoxiang Zhang">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="Next">
+<meta property="article:tag" content="Objective-C">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/05/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+<link rel="canonical" href="http://yoursite.com/2020/06/17/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E7%BB%A7%E6%89%BF%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -47,7 +46,7 @@
   };
 </script>
 
-  <title>Hexo搭建个人博客 | Abnerの技术小栈</title>
+  <title>Objective-C基础入门（继承） | Abnerの技术小栈</title>
   
 
 
@@ -162,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/17/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E7%BB%A7%E6%89%BF%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -175,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo搭建个人博客
+          Objective-C基础入门（继承）
         </h1>
 
         <div class="post-meta">
@@ -186,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-05-31 07:23:57 / 修改时间：14:33:53" itemprop="dateCreated datePublished" datetime="2020-05-31T07:23:57+08:00">2020-05-31</time>
+              <time title="创建时间：2020-06-17 09:02:12 / 修改时间：10:15:53" itemprop="dateCreated datePublished" datetime="2020-06-17T09:02:12+08:00">2020-06-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -194,7 +193,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
                 </span>
             </span>
 
@@ -209,21 +208,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>欢迎来到 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! 这是我的第一篇博客.<br>Hexo文档 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> .<br>Hexo 问题反馈社区 <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a><br>Hexo github 问题反馈 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="创建一篇新博客"><a href="#创建一篇新博客" class="headerlink" title="创建一篇新博客"></a>创建一篇新博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h1 id="Root、父类和子类"><a href="#Root、父类和子类" class="headerlink" title="Root、父类和子类"></a>Root、父类和子类</h1><p>一般，NSObject是我们所说的Root类<br>父类和子类的相关术语：superclass/parent class, subclass/child class<br>子类可以继承父类的非私有实例变量和方法<br>⚠️ 在父类的interface中申明，并且implementation中不申明，子类才能访问其实例变量<br>⚠️  在父类的implementation中申明或合成的实例变量，子类无法直接访问；需要用自定义的getter或setter方法来访问</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@interface ClassA: NSObject &#123;   </span><br><span class="line">    int   x; </span><br><span class="line">&#125;</span><br><span class="line">-(void) initVar; </span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ClassA </span><br><span class="line">-(void) initVar &#123;   </span><br><span class="line">    x &#x3D; 100; </span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface ClassB: ClassA &#x2F;&#x2F; ClassB继承了ClassA</span><br><span class="line">-(void) printVar; </span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ClassB </span><br><span class="line">-(void) printVar &#123;   </span><br><span class="line">    NSLog (@&quot;x &#x3D; %i&quot;, x); &#x2F;&#x2F; print x 的值，它是在ClassA中申明，ClassB中未申明的</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
 
-<p>更多信息: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="本地运行服务器"><a href="#本地运行服务器" class="headerlink" title="本地运行服务器"></a>本地运行服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="生成静态文档"><a href="#生成静态文档" class="headerlink" title="生成静态文档"></a>生成静态文档</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<h3 id="Hexo和Next超实用视频教程"><a href="#Hexo和Next超实用视频教程" class="headerlink" title="Hexo和Next超实用视频教程"></a>Hexo和Next超实用视频教程</h3><p>在这里要感谢搭建CodeSheep和Mackxin的视频教程，帮助我搭建Hexo和使用Next主题<br>搭建Hexo: <a href="https://www.bilibili.com/video/BV1Yb411a7ty" target="_blank" rel="noopener">CodeSheep教程</a><br>使用Next主题: <a href="https://www.bilibili.com/video/BV16W411t7mq?from=search&seid=10693601305278358285" target="_blank" rel="noopener">Mackxin教程</a></p>
-
+<p>OC寻找方法的机制</p>
+<blockquote>
+<p>首先，检查对象所属的类，以查看是否在该类中使用特定名称显式地定义了方法。如果是，这就是我们使用的方法。如果没有定义，则选中父类。如果这里定义了方法，就用它。如果没有，搜索仍在继续。<br>父类会被检查，直到发生以下两种情况之一:要么找到包含指定方法的类，要么在返回根类之后没有找到该方法。如果第一个发生了，一切都准备好了;如果出现第二种情况，就会出现问题，并生成如下警告消息: warning: ‘ClassB’ may not respond to ‘-inity’</p>
+</blockquote>
+<h1 id="通过继承扩展"><a href="#通过继承扩展" class="headerlink" title="通过继承扩展"></a>通过继承扩展</h1><h2 id="点类和对象分配"><a href="#点类和对象分配" class="headerlink" title="点类和对象分配"></a>点类和对象分配</h2><h2 id="class-指令"><a href="#class-指令" class="headerlink" title="@class 指令"></a>@class 指令</h2><h2 id="拥有对象的类"><a href="#拥有对象的类" class="headerlink" title="拥有对象的类"></a>拥有对象的类</h2><h1 id="override方法"><a href="#override方法" class="headerlink" title="override方法"></a>override方法</h1><h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1>
     </div>
 
     
@@ -232,8 +225,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
-              <a href="/tags/Next/" rel="tag"># Next</a>
+              <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
           </div>
 
         
@@ -241,10 +233,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/05/31/%E9%83%A8%E7%BD%B2Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" rel="next" title="部署Hexo遇到的坑">
-      部署Hexo遇到的坑 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/06/15/LeetCode.739%20-%20%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/" rel="prev" title="LeetCode.739 - 每日温度">
+      <i class="fa fa-chevron-left"></i> LeetCode.739 - 每日温度
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/05/LeetCode.496-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0I/" rel="next" title="LeetCode.496 - 下一个更大元素I">
+      LeetCode.496 - 下一个更大元素I <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -304,7 +299,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速入门"><span class="nav-number">1.</span> <span class="nav-text">快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一篇新博客"><span class="nav-number">1.1.</span> <span class="nav-text">创建一篇新博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地运行服务器"><span class="nav-number">1.2.</span> <span class="nav-text">本地运行服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成静态文档"><span class="nav-number">1.3.</span> <span class="nav-text">生成静态文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到远程站点"><span class="nav-number">1.4.</span> <span class="nav-text">部署到远程站点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo和Next超实用视频教程"><span class="nav-number">1.5.</span> <span class="nav-text">Hexo和Next超实用视频教程</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Root、父类和子类"><span class="nav-number">1.</span> <span class="nav-text">Root、父类和子类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过继承扩展"><span class="nav-number">2.</span> <span class="nav-text">通过继承扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#点类和对象分配"><span class="nav-number">2.1.</span> <span class="nav-text">点类和对象分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#class-指令"><span class="nav-number">2.2.</span> <span class="nav-text">@class 指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拥有对象的类"><span class="nav-number">2.3.</span> <span class="nav-text">拥有对象的类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#override方法"><span class="nav-number">3.</span> <span class="nav-text">override方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽象类"><span class="nav-number">4.</span> <span class="nav-text">抽象类</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
