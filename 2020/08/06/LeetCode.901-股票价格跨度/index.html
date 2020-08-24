@@ -20,20 +20,22 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="for语句1234567891011int main (int argc, char * argv[]) &amp;#123;        @autoreleasepool &amp;#123;           int n, triangularNumber;        triangularNumber &#x3D; 0;        for ( n &#x3D; 1; n &lt;&#x3D; 20">
+  <meta name="description" content="题目描述编写一个 StockSpanner 类，它收集某些股票的每日报价，并返回该股票当日价格的跨度。 今天股票价格的跨度被定义为股票价格小于或等于今天价格的最大连续日数（从今天开始往回数，包括今天）。 例如，如果未来7天股票的价格是 [100, 80, 60, 70, 60, 75, 85]，那么股票跨度将是 [1, 1, 1, 2, 1, 4, 6]。 示例：  输入：[“StockSpann">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Objective-C基础入门（循环）">
-<meta property="og:url" content="http://yoursite.com/2020/06/10/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%BE%AA%E7%8E%AF%EF%BC%89/index.html">
+<meta property="og:title" content="LeetCode.901 - 股票价格跨度">
+<meta property="og:url" content="http://yoursite.com/2020/08/06/LeetCode.901-%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E8%B7%A8%E5%BA%A6/index.html">
 <meta property="og:site_name" content="Abnerの技术小栈">
-<meta property="og:description" content="for语句1234567891011int main (int argc, char * argv[]) &amp;#123;        @autoreleasepool &amp;#123;           int n, triangularNumber;        triangularNumber &#x3D; 0;        for ( n &#x3D; 1; n &lt;&#x3D; 20">
+<meta property="og:description" content="题目描述编写一个 StockSpanner 类，它收集某些股票的每日报价，并返回该股票当日价格的跨度。 今天股票价格的跨度被定义为股票价格小于或等于今天价格的最大连续日数（从今天开始往回数，包括今天）。 例如，如果未来7天股票的价格是 [100, 80, 60, 70, 60, 75, 85]，那么股票跨度将是 [1, 1, 1, 2, 1, 4, 6]。 示例：  输入：[“StockSpann">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-10T00:55:01.000Z">
-<meta property="article:modified_time" content="2020-06-10T01:46:42.263Z">
+<meta property="article:published_time" content="2020-08-06T00:47:03.000Z">
+<meta property="article:modified_time" content="2020-08-06T00:53:38.700Z">
 <meta property="article:author" content="Gaoxiang Zhang">
-<meta property="article:tag" content="Objective-C">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="Swift">
+<meta property="article:tag" content="单调栈">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/06/10/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%BE%AA%E7%8E%AF%EF%BC%89/">
+<link rel="canonical" href="http://yoursite.com/2020/08/06/LeetCode.901-%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E8%B7%A8%E5%BA%A6/">
 
 
 <script id="page-configurations">
@@ -46,7 +48,7 @@
   };
 </script>
 
-  <title>Objective-C基础入门（循环） | Abnerの技术小栈</title>
+  <title>LeetCode.901 - 股票价格跨度 | Abnerの技术小栈</title>
   
 
 
@@ -161,7 +163,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/10/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%BE%AA%E7%8E%AF%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/06/LeetCode.901-%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E8%B7%A8%E5%BA%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -174,7 +176,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Objective-C基础入门（循环）
+          LeetCode.901 - 股票价格跨度
         </h1>
 
         <div class="post-meta">
@@ -185,7 +187,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-10 08:55:01 / 修改时间：09:46:42" itemprop="dateCreated datePublished" datetime="2020-06-10T08:55:01+08:00">2020-06-10</time>
+              <time title="创建时间：2020-08-06 08:47:03 / 修改时间：08:53:38" itemprop="dateCreated datePublished" datetime="2020-08-06T08:47:03+08:00">2020-08-06</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -193,7 +195,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                  <a href="/categories/%E6%B1%82%E8%81%8C/" itemprop="url" rel="index"><span itemprop="name">求职</span></a>
                 </span>
             </span>
 
@@ -208,14 +210,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int main (int argc, char * argv[]) &#123;    </span><br><span class="line">    @autoreleasepool &#123;   </span><br><span class="line">        int n, triangularNumber;</span><br><span class="line">        triangularNumber &#x3D; 0;</span><br><span class="line">        for ( n &#x3D; 1; n &lt;&#x3D; 200; n &#x3D; n + 1 )          </span><br><span class="line">            triangularNumber +&#x3D; n;</span><br><span class="line">            </span><br><span class="line">        NSLog (@&quot;The 200th triangular number is %i&quot;, triangularNumber);   </span><br><span class="line">    &#125;</span><br><span class="line">    return 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中<br><code>for ( n = 1; n &lt;= 200; n = n + 1 )</code><br>也可以改为<br><code>for ( n = 1; n &lt;= 200; ++n)</code> </p>
-<h1 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a>while语句</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int main (int argc, char * argv[]) &#123;   </span><br><span class="line">    @autoreleasepool &#123;      </span><br><span class="line">        int count &#x3D; 1;</span><br><span class="line">        </span><br><span class="line">        while ( count &lt;&#x3D; 5 ) &#123;      </span><br><span class="line">            NSLog (@&quot;%i&quot;, count);        </span><br><span class="line">            ++count;  </span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">    return 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>编写一个 StockSpanner 类，它收集某些股票的每日报价，并返回该股票当日价格的跨度。</p>
+<p>今天股票价格的跨度被定义为股票价格小于或等于今天价格的最大连续日数（从今天开始往回数，包括今天）。</p>
+<p>例如，如果未来7天股票的价格是 [100, 80, 60, 70, 60, 75, 85]，那么股票跨度将是 [1, 1, 1, 2, 1, 4, 6]。</p>
+<p>示例：</p>
+<blockquote>
+<p>输入：[“StockSpanner”,”next”,”next”,”next”,”next”,”next”,”next”,”next”], [[],[100],[80],[60],[70],[60],[75],[85]]<br>输出：[null,1,1,1,2,1,4,6]<br>解释：<br>首先，初始化 S = StockSpanner()，然后：<br>S.next(100) 被调用并返回 1，<br>S.next(80) 被调用并返回 1，<br>S.next(60) 被调用并返回 1，<br>S.next(70) 被调用并返回 2，<br>S.next(60) 被调用并返回 1，<br>S.next(75) 被调用并返回 4，<br>S.next(85) 被调用并返回 6。</p>
+</blockquote>
+<p>注意 (例如) S.next(75) 返回 4，因为截至今天的最后 4 个价格<br>(包括今天的价格 75) 小于或等于今天的价格。</p>
+<p>提示：</p>
+<p>调用 StockSpanner.next(int price) 时，将有 1 &lt;= price &lt;= 10^5。<br>每个测试用例最多可以调用  10000 次 StockSpanner.next。<br>在所有测试用例中，最多调用 150000 次 StockSpanner.next。<br>此问题的总时间限制减少了 50%。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/online-stock-span" target="_blank" rel="noopener">https://leetcode-cn.com/problems/online-stock-span</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>总思路：当前股价往前搜索，遇到往日股价更大的则停止</p>
+<p>设计两个全局变量stack，用于存储股价 &amp; 跨度<br>维护一个价格的单调栈<br>若当前股价 &gt; 栈顶股价，则当前股价的跨度应加上栈顶股价的跨度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class StockSpanner &#123;</span><br><span class="line"></span><br><span class="line">    var priceStack: [Int]</span><br><span class="line">    var spanStack: [Int]</span><br><span class="line">    </span><br><span class="line">    init() &#123;</span><br><span class="line">        priceStack &#x3D; [Int]()</span><br><span class="line">        spanStack &#x3D; [Int]()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func next(_ price: Int) -&gt; Int &#123;</span><br><span class="line">        var span &#x3D; 1</span><br><span class="line">        while let lastPrice &#x3D; priceStack.last, let lastSpan &#x3D; spanStack.last, price &gt;&#x3D; lastPrice &#123;</span><br><span class="line">            span +&#x3D; lastSpan</span><br><span class="line">            spanStack.removeLast()</span><br><span class="line">            priceStack.removeLast()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        priceStack.append(price)</span><br><span class="line">        spanStack.append(span)</span><br><span class="line">        return span</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Your StockSpanner object will be instantiated and called as such:</span><br><span class="line"> * let obj &#x3D; StockSpanner()</span><br><span class="line"> * let ret_1: Int &#x3D; obj.next(price)</span><br><span class="line"> *&#x2F;</span><br></pre></td></tr></table></figure>
 
-<h1 id="do语句"><a href="#do语句" class="headerlink" title="do语句"></a>do语句</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int main (int argc, char * argv[]) &#123;   </span><br><span class="line">    @autoreleasepool &#123;     </span><br><span class="line">        int number, right_digit;</span><br><span class="line">        NSLog (@&quot;Enter your number.&quot;);    </span><br><span class="line">        scanf (&quot;%i&quot;, &amp;number);</span><br><span class="line">        do &#123;         </span><br><span class="line">            right_digit &#x3D; number % 10;    </span><br><span class="line">            NSLog (@&quot;%i&quot;, right_digit);   </span><br><span class="line">            number &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;     </span><br><span class="line">        while ( number !&#x3D; 0 ); </span><br><span class="line">        &#125;</span><br><span class="line">    return 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="break语句"><a href="#break语句" class="headerlink" title="break语句"></a>break语句</h1><p>终止循环，离开整个循环嵌套</p>
-<h1 id="continue语句"><a href="#continue语句" class="headerlink" title="continue语句"></a>continue语句</h1><p>离开当前循环，继续下一个循环</p>
+<h1 id="其他思路"><a href="#其他思路" class="headerlink" title="其他思路"></a>其他思路</h1><p><a href="https://www.bilibili.com/video/BV1kW411k77K?from=search&amp;seid=15780837099295797199" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1kW411k77K?from=search&amp;seid=15780837099295797199</a></p>
 
     </div>
 
@@ -225,7 +235,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag"># 单调栈</a>
           </div>
 
         
@@ -234,12 +246,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/09/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%89/" rel="prev" title="Objective-C基础入门（数据类型和表达式）">
-      <i class="fa fa-chevron-left"></i> Objective-C基础入门（数据类型和表达式）
+    <a href="/2020/08/05/LeetCode.496%20-%20%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0I/" rel="prev" title="LeetCode.496 - 下一个更大元素I">
+      <i class="fa fa-chevron-left"></i> LeetCode.496 - 下一个更大元素I
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/06/10/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%86%B3%E7%AD%96%EF%BC%89/" rel="next" title="Objective-C基础入门（决策）">
-      Objective-C基础入门（决策） <i class="fa fa-chevron-right"></i>
+    <a href="/2020/08/24/%E6%98%BE%E7%A4%BA%E5%B1%8F%E9%80%89%E6%8B%A9%E6%96%B0%E6%89%8B%E6%8C%87%E5%8D%97/" rel="next" title="显示屏选择新手指南">
+      显示屏选择新手指南 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -299,7 +311,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#for语句"><span class="nav-number">1.</span> <span class="nav-text">for语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while语句"><span class="nav-number">2.</span> <span class="nav-text">while语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#do语句"><span class="nav-number">3.</span> <span class="nav-text">do语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#break语句"><span class="nav-number">4.</span> <span class="nav-text">break语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#continue语句"><span class="nav-number">5.</span> <span class="nav-text">continue语句</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他思路"><span class="nav-number">3.</span> <span class="nav-text">其他思路</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

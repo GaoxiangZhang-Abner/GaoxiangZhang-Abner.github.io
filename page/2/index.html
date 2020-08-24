@@ -155,6 +155,222 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/07/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/07/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89/" class="post-title-link" itemprop="url">Objective-C基础入门（对象）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-07 09:27:28" itemprop="dateCreated datePublished" datetime="2020-06-07T09:27:28+08:00">2020-06-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-09 17:46:37" itemprop="dateModified" datetime="2020-06-09T17:46:37+08:00">2020-06-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="文件扩展名"><a href="#文件扩展名" class="headerlink" title="文件扩展名"></a>文件扩展名</h1><table>
+<thead>
+<tr>
+<th>扩展</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.c</td>
+<td>C语言源文件</td>
+</tr>
+<tr>
+<td>.cc, .cpp</td>
+<td>C++语言源文件</td>
+</tr>
+<tr>
+<td>.h</td>
+<td>头文件</td>
+</tr>
+<tr>
+<td>.m</td>
+<td>Objective-C源文件</td>
+</tr>
+<tr>
+<td>.mm</td>
+<td>Objective-C++源文件</td>
+</tr>
+<tr>
+<td>.pl</td>
+<td>Perl源文件</td>
+</tr>
+<tr>
+<td>.o</td>
+<td>Object (已编译的) 文件</td>
+</tr>
+</tbody></table>
+<h1 id="基础实例"><a href="#基础实例" class="headerlink" title="基础实例"></a>基础实例</h1><h2 id="导入包-库"><a href="#导入包-库" class="headerlink" title="导入包/库"></a>导入包/库</h2><p>导入Foundation目录下的Foundation.h文件<br><code>import &lt;Foundation/Foundation.h&gt;</code></p>
+<h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><p><code>int main (int argc, const char *argv[]) {</code><br> <code>@autoreleasepool {}</code><br><code>return 0;</code><br><code>}</code></p>
+<h2 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h2><p>打印常量<br>打印 NSString对象 @”Hello, World!”<br><code>NSLog(@&quot;Hello, World!&quot;);</code></p>
+<p>打印变量<br><code>int sum;</code><br><code>sum = 50 +25;</code><br><code>NSLog(@&#39;The sum of 50 and 25 is %i&#39;, sum);</code></p>
+<h1 id="类-对象-方法"><a href="#类-对象-方法" class="headerlink" title="类, 对象, 方法"></a>类, 对象, 方法</h1><p>对象：类的唯一表示<br>实例：类的具体表示<br>方法：在实例上执行的操作</p>
+<p>示例代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Program to work with fractions – class version</span><br><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;---- @interface section ----</span><br><span class="line">@interface Fraction: NSObject</span><br><span class="line">-(void)   print;</span><br><span class="line">-(void)   setNumerator: (int) n;</span><br><span class="line">-(void)   setDenominator: (int) d;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;---- @implementation section ----</span><br><span class="line">@implementation Fraction &#123;</span><br><span class="line">    int  numerator;</span><br><span class="line">    int  denominator;</span><br><span class="line">    </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">-(void) print &#123;   </span><br><span class="line">    NSLog (@&quot;%i&#x2F;%i&quot;, numerator, denominator);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void) setNumerator: (int) n &#123;  </span><br><span class="line">    numerator &#x3D; n; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void) setDenominator: (int) d &#123;  </span><br><span class="line">    denominator &#x3D; d; </span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;---- program section ----</span><br><span class="line">int main (int argc, char * argv[]) &#123;   </span><br><span class="line">    </span><br><span class="line">    @autoreleasepool &#123;      </span><br><span class="line">        Fraction  *myFraction;</span><br><span class="line">        &#x2F;&#x2F; Create an instance of a Fraction</span><br><span class="line">        myFraction &#x3D; [Fraction alloc];      </span><br><span class="line">        myFraction &#x3D; [myFraction init];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; Set fraction to 1&#x2F;3</span><br><span class="line">        [myFraction setNumerator: 1];     </span><br><span class="line">        [myFraction setDenominator: 3];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; Display the fraction using the print method</span><br><span class="line">        NSLog (@&quot;The value of myFraction is:&quot;);    </span><br><span class="line">        [myFraction print];   </span><br><span class="line">    &#125;   </span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="类和方法的申明和调用"><a href="#类和方法的申明和调用" class="headerlink" title="类和方法的申明和调用"></a>类和方法的申明和调用</h2><p>⚠️ OC是大小写敏感的</p>
+<h3 id="1、-interface-section（预申明类和方法）"><a href="#1、-interface-section（预申明类和方法）" class="headerlink" title="1、@interface section（预申明类和方法）"></a>1、@interface section（预申明类和方法）</h3><p>@interface section 描述类和方法<br>一般形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface NewClassName: ParentClassName</span><br><span class="line">    propertyAndMethodDeclrations</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@interface Fraction: NSObject</span><br><span class="line">-(void)   print;</span><br><span class="line">-(void)   setNumerator: (int) n;</span><br><span class="line">-(void)   setDenominator: (int) d;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>第一行：申明了一个类Fraction，其父类为NSObject，这个父类在NSObject.h中被定义，此文件被包含在Foundation.h中<br>第二行： - 表示申明了一个实例方法（对类的实例执行的方法），+ 表示申明了一个类方法（对类本身执行的方法）<br>第三行： (void) 表示返回值为空<br>第四行： 申明了一个返回值为空，名叫setDenominator的实例方法，它的参数是d，类型为int<br>第五行：以@end结尾</p>
+<h3 id="2、-implementation-section-（具体申明类和方法）"><a href="#2、-implementation-section-（具体申明类和方法）" class="headerlink" title="2、@implementation section （具体申明类和方法）"></a>2、@implementation section （具体申明类和方法）</h3><p>@implementation section 描述数据和实施interface申明类和方法的实际代码<br>一般形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@implementation NewClassName &#123;</span><br><span class="line">    memberDeclarations;</span><br><span class="line">&#125;</span><br><span class="line">    methodDefinitions;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@implementation Fraction &#123;</span><br><span class="line">    int  numerator;</span><br><span class="line">    int  denominator;</span><br><span class="line">    </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">-(void) print &#123;   </span><br><span class="line">    NSLog (@&quot;%i&#x2F;%i&quot;, numerator, denominator);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void) setNumerator: (int) n &#123;  </span><br><span class="line">    numerator &#x3D; n; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void) setDenominator: (int) d &#123;  </span><br><span class="line">    denominator &#x3D; d; </span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>第一行：类后面的父类可跟，可不跟<br>第二、三行：申明实例变量（实例化一个类时被创建，和实例对应）<br>扩展的函数：在{}申明函数的具体内容<br>最后以@end结尾</p>
+<h3 id="3、program-section-包含执行的程序代码-（实例化类并调用方法）"><a href="#3、program-section-包含执行的程序代码-（实例化类并调用方法）" class="headerlink" title="3、program section 包含执行的程序代码 （实例化类并调用方法）"></a>3、program section 包含执行的程序代码 （实例化类并调用方法）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">int main (int argc, char * argv[]) &#123;   </span><br><span class="line">    </span><br><span class="line">    @autoreleasepool &#123;      </span><br><span class="line">        Fraction  *myFraction;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; Create an instance of a Fraction</span><br><span class="line">        myFraction &#x3D; [Fraction alloc];      </span><br><span class="line">        myFraction &#x3D; [myFraction init];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; Set fraction to 1&#x2F;3</span><br><span class="line">        [myFraction setNumerator: 1];     </span><br><span class="line">        [myFraction setDenominator: 3];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; Display the fraction using the print method</span><br><span class="line">        NSLog (@&quot;The value of myFraction is:&quot;);    </span><br><span class="line">        [myFraction print];   </span><br><span class="line">    &#125;   </span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="实例化并初始化一个对象方法一"><a href="#实例化并初始化一个对象方法一" class="headerlink" title="实例化并初始化一个对象方法一"></a>实例化并初始化一个对象方法一</h4><p>1、申明一个指针（即存储一个地址）myFraction，指针指向的地址，用于储存Fraction类的值<br><code>Fraction *myFraction;</code></p>
+<p>2、发送消息给Fraction类，分配一个内存空间（将所有实例变量都置零），这里已经实例化完成myFraction<br><code>myFraction = [Fraction alloc];</code></p>
+<p>3、发送消息给myFraction，初始化<br><code>myFraction = [myFraction init];</code></p>
+<h4 id="实例化并初始化一个对象方法二"><a href="#实例化并初始化一个对象方法二" class="headerlink" title="实例化并初始化一个对象方法二"></a>实例化并初始化一个对象方法二</h4><p>合并以上代码<br><code>Fraction *myFraction = [[Fraction alloc] init];</code></p>
+<h4 id="实例化并初始化一个对象方法三"><a href="#实例化并初始化一个对象方法三" class="headerlink" title="实例化并初始化一个对象方法三"></a>实例化并初始化一个对象方法三</h4><p>合并alloc和init<br><code>Fraction *myFraction = [Fraction new];</code></p>
+<h4 id="调用类和方法"><a href="#调用类和方法" class="headerlink" title="调用类和方法"></a>调用类和方法</h4><p>一般形式：<br><code>[ ClassOrInstance method ];</code><br>如: [ yourCar new ];</p>
+<p><code>[ ClassOrInstance method: argument ];</code><br>如: [ yourCar setSpeed: 55 ];</p>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[myFraction setNumerator: 1];     </span><br><span class="line">[myFraction setDenominator: 3];</span><br><span class="line">[myFraction print];</span><br></pre></td></tr></table></figure>
+<p>第一行：向myFraction发送消息setNumerator，参数为1；然后向setNumerator发送消息，参数为1；之后会调用Fraction类的setNumerator方法，此时1存在变量n中，最后将此值存到实例变量numerator中</p>
+<h2 id="基本的访问器方法（setter和getter）"><a href="#基本的访问器方法（setter和getter）" class="headerlink" title="基本的访问器方法（setter和getter）"></a>基本的访问器方法（setter和getter）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@interface Fraction: NSObject</span><br><span class="line">- (void) setNumerator: (int) n;</span><br><span class="line">- (int) numerator;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation Fraction &#123;</span><br><span class="line">    int numerator;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void) setNumerator: (int) n &#123;</span><br><span class="line">    numerator &#x3D; n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (int) numerator &#123;</span><br><span class="line">    return numerator;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/31/%E9%83%A8%E7%BD%B2Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/31/%E9%83%A8%E7%BD%B2Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">部署Hexo遇到的坑</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-31 15:40:29 / 修改时间：15:56:30" itemprop="dateCreated datePublished" datetime="2020-05-31T15:40:29+08:00">2020-05-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h2><p>一定要选择LTS长期支持的稳定版</p>
+<h2 id="安装npm"><a href="#安装npm" class="headerlink" title="安装npm"></a>安装npm</h2><p>Hexo的<br>由于默认的npm镜像在国外，速度感人，甚至会终端长时间无响应，因此需要更换npm镜像源</p>
+<p>一般使用淘宝镜像，办法有两种</p>
+<h3 id="1、创建一个全局新镜像命令"><a href="#1、创建一个全局新镜像命令" class="headerlink" title="1、创建一个全局新镜像命令"></a>1、创建一个全局新镜像命令</h3><p>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>⚠️ 这里有一个坑，在之后Hexo init时，依然使用了原npm，依然会导致安装缓慢</p>
+<h3 id="2、替换原npm镜像配置"><a href="#2、替换原npm镜像配置" class="headerlink" title="2、替换原npm镜像配置"></a>2、替换原npm镜像配置</h3><p>npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>推荐使用此方法</p>
+<h2 id="Hexo-init"><a href="#Hexo-init" class="headerlink" title="Hexo init"></a>Hexo init</h2><p>如果遇到初始化失败，需要删除整个Blog，重新init</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -303,20 +519,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
