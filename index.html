@@ -155,6 +155,215 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/04/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88GCD%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/04/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88GCD%EF%BC%89/" class="post-title-link" itemprop="url">Objective-C基础入门（GCD）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-04 13:04:45 / 修改时间：14:24:44" itemprop="dateCreated datePublished" datetime="2020-11-04T13:04:45+08:00">2020-11-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="GCD简介"><a href="#GCD简介" class="headerlink" title="GCD简介"></a>GCD简介</h1><p>GCD全称Grand Central Dispatch，中央调度中心<br>它主要用于优化多核处理器和其他对称处理系统<br>它在一个线程池模式的基础上执行并发的任务</p>
+<p>GCD的两大核心概念：任务、队列</p>
+<h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><p>任务，即指执行操作，也就是执行的代码，它一般放在block中<br>在GCD中，执行任务的两大方式：同步执行、异步执行<br>两者的区别：任务是否立即执行、是否具备开辟新线程的能力</p>
+<h3 id="同步执行"><a href="#同步执行" class="headerlink" title="同步执行"></a>同步执行</h3><p>同步添加任务到指定队列后，任务不会立即执行，需要等待队列前面的任务执行完成后，再执行此任务<br>只能在当前队列执行任务，不具备开辟新线程的能力</p>
+<h3 id="异步执行"><a href="#异步执行" class="headerlink" title="异步执行"></a>异步执行</h3><p>异步添加任务到指定队列后，任务会立即执行<br>可能会开辟新的线程执行任务，具备开启新线程的能力</p>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>队列，即指执行任务的等待队列，它是一种特殊的线性表，遵守FIFO（First in First Out）原则，即队尾插入新任务，队头读取任务<br>在GCD中，队列的两种类型：并行队列、串行队列</p>
+<h3 id="串行队列"><a href="#串行队列" class="headerlink" title="串行队列"></a>串行队列</h3><p>每次只执行一个任务，当它执行完毕后，再执行下一个任务（只开启一个线程）</p>
+<h3 id="并行队列"><a href="#并行队列" class="headerlink" title="并行队列"></a>并行队列</h3><p>可以让多个任务并发(同时)执行（可以开启多个线程）</p>
+<blockquote>
+<p>注意<br>并发队列的并发功能只有在异步（dispatch_async）方法下才有效。</p>
+</blockquote>
+<h2 id="GCD的使用"><a href="#GCD的使用" class="headerlink" title="GCD的使用"></a>GCD的使用</h2><p>GCD的创建分两步：<br>1、创建一个队列（串行/并行队列）<br>2、将任务追加到队列中，然后系统根据任务类型执行任务（同步/异步任务）</p>
+<h3 id="队列的创建"><a href="#队列的创建" class="headerlink" title="队列的创建"></a>队列的创建</h3><p>调用以下方法来创建队列：<br>dispatch_queue_create(const char * _Nullable label, dispatch_queue_attr_t  _Nullable attr)<br>第一个参数：队列的唯一标识符，一般用App ID这样的逆序全程域名<br>第二个参数：队列的类型，DISPATCH_QUEUE_SERIAL是串行队列，DISPATCH_QUEUE_CONCURRENT是并行队列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建串行队列</span><br><span class="line">dispatch_queue_t queueSerial &#x3D; dispatch_queue_create(@&quot;io.github.gaoxiangzhang-abner&quot;, DISPATCH_QUEUE_SERIAL);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 创建并行队列</span><br><span class="line">dispatch_queue_t queueConcurrent &#x3D; dispatch_queue_create(@&quot;io.github.gaoxiangzhang-abner&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br></pre></td></tr></table></figure>
+
+<h3 id="任务的创建"><a href="#任务的创建" class="headerlink" title="任务的创建"></a>任务的创建</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/20/Swift%E5%85%A5%E9%97%A8-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/20/Swift%E5%85%A5%E9%97%A8-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">Swift入门(基本概念)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-20 12:03:58 / 修改时间：17:23:22" itemprop="dateCreated datePublished" datetime="2020-10-20T12:03:58+08:00">2020-10-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="常量-amp-变量-Constants-amp-Variables"><a href="#常量-amp-变量-Constants-amp-Variables" class="headerlink" title="常量&amp;变量 Constants &amp; Variables"></a>常量&amp;变量 Constants &amp; Variables</h1><p>常量：值一旦设置就不能改变<br>变量：值可以改变<br>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let maximumNumberOfLoginAttempts &#x3D; 10</span><br><span class="line">var currentLoginAttempt &#x3D; 0</span><br></pre></td></tr></table></figure>
+
+<p>同时可以申明多个常量或变量，示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a &#x3D; &quot;g&quot;, b &#x3D; &quot;k&quot;, c &#x3D; &quot;d&quot;</span><br><span class="line">var x &#x3D; 0.0, y &#x3D; 0.0, z &#x3D; 0.0</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<blockquote>
+<p>若值不会改变则申明常量，若会改变则申明变量</p>
+</blockquote>
+<h2 id="类型注解-Type-Annotations"><a href="#类型注解-Type-Annotations" class="headerlink" title="类型注解 Type Annotations"></a>类型注解 Type Annotations</h2><p>当申明常量和变量的时候可以提供一个类型注解，来明确它们值的类型<br>类型注解：（在常量或变量名后加）一个冒号、空格和要使用的类型名<br>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var welcomeMessage: String</span><br></pre></td></tr></table></figure>
+
+<p>申明同一类型的多个常量或变量，可以共用一个类型注解，示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var red, green, blue: Double</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<blockquote>
+<p>Swift拥有强大的类型推断，因此如果常量或变量有初始值，则不需要写类型注解</p>
+</blockquote>
+<h2 id="常量和变量命名-Naming-Constants-and-Variables"><a href="#常量和变量命名-Naming-Constants-and-Variables" class="headerlink" title="常量和变量命名 Naming Constants and Variables"></a>常量和变量命名 Naming Constants and Variables</h2><p>非法的命名：不能数字开头或包含空格字符、数学符号、箭头、私有Unicode标量值、线和框绘制字符</p>
+<p>注意：</p>
+<blockquote>
+<p>如果命名要与Swift关键字相同，则需要使用反引号(‘)包围该关键字，但最好避免这样命名</p>
+</blockquote>
+<h2 id="打印常量或变量-Printing-Constants-and-Variables"><a href="#打印常量或变量-Printing-Constants-and-Variables" class="headerlink" title="打印常量或变量 Printing Constants and Variables"></a>打印常量或变量 Printing Constants and Variables</h2><p>方法如下：<br>print(_:separator:terminator:) function:<br>分隔符和终止符参数有默认值，因此可以在调用此函数时省略它们。默认情况下，函数通过添加换行符来终止它打印的行。</p>
+<p>字符串插值 string interpolation<br>在print函数中，用括号括起常量或变量名字，在括号前面用反斜杠转义<br>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let name &#x3D; &quot;abner&quot;</span><br><span class="line">print(&quot;My name is \(name)!&quot;)</span><br><span class="line">&#x2F;&#x2F; Prints &quot;My name is abner!&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="注释-Comment"><a href="#注释-Comment" class="headerlink" title="注释 Comment"></a>注释 Comment</h1><p>单行注视：两个斜杠(//)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; This is a comment.</span><br></pre></td></tr></table></figure>
+
+<p>多行注释：以斜杠和星号(/<em>)开始，星号和斜杠(</em>/)结束</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* This is also a comment</span><br><span class="line">but is written over multiple lines. *&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>嵌套多行注释：使您能够快速而轻松地注释掉大块代码，即使代码已经包含多行注释。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* This is the start of the first multiline comment.</span><br><span class="line"> &#x2F;* This is the second, nested multiline comment. *&#x2F;</span><br><span class="line">This is the end of the first multiline comment. *&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h1 id="分号-Semicolons"><a href="#分号-Semicolons" class="headerlink" title="分号 Semicolons"></a>分号 Semicolons</h1><p>Swift中不需要在每行末尾添加分号<br>但是在一行上写多个单独的语句时，需要分号分隔</p>
+<h1 id="整型-Integers"><a href="#整型-Integers" class="headerlink" title="整型 Integers"></a>整型 Integers</h1><p>Swift提供8、16、32、64位的有符号或无符号整型</p>
+<h2 id="整型边界-Integer-Bounds"><a href="#整型边界-Integer-Bounds" class="headerlink" title="整型边界 Integer Bounds"></a>整型边界 Integer Bounds</h2><p>调用整型的min或max方法可以获得整型的最小值或最大值<br>示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let minValue &#x3D; UInt8.min  &#x2F;&#x2F; minValue is equal to 0, and is of type UInt8</span><br><span class="line">let maxValue &#x3D; UInt8.max  &#x2F;&#x2F; maxValue is equal to 255, and is of type UInt8</span><br></pre></td></tr></table></figure>
+
+<h2 id="Int类型"><a href="#Int类型" class="headerlink" title="Int类型"></a>Int类型</h2><p>在32位平台，Int的大小和Int32一致<br>在64位平台，Int的大小和Int64一致</p>
+<h2 id="UInt类型"><a href="#UInt类型" class="headerlink" title="UInt类型"></a>UInt类型</h2><p>在32位平台，UInt的大小和UInt32一致<br>在64位平台，UInt的大小和UInt64一致</p>
+<p>注意：</p>
+<blockquote>
+<p>除非需要UInt量级的数字，否则推荐使用Int，方便代码互相操作性</p>
+</blockquote>
+<h1 id="浮点数-Floating-Point-Numbers"><a href="#浮点数-Floating-Point-Numbers" class="headerlink" title="浮点数 Floating-Point Numbers"></a>浮点数 Floating-Point Numbers</h1><p>Swift 提供两种浮点数类型<br>Double：64位浮点数<br>Float：32位浮点数<br>Double至少精准到15位小数，Float至少精准到6位小数，当两者都可以使用时，推荐Double类型</p>
+<h1 id="类型安全和类型推断-Type-Safety-and-Type-Inference"><a href="#类型安全和类型推断-Type-Safety-and-Type-Inference" class="headerlink" title="类型安全和类型推断 Type Safety and Type Inference"></a>类型安全和类型推断 Type Safety and Type Inference</h1><p>类型安全：Swift是类型安全的，即要明确值的类型。Swift会在编译阶段进行类型检查来保证类型安全、<br>类型推断：Swift的类型推断使编译器在编译代码时可以自动推断出特定表达式的类型，只需检查提供的值即可</p>
+<h1 id="数字字面量-Numeric-Literals"><a href="#数字字面量-Numeric-Literals" class="headerlink" title="数字字面量 Numeric Literals"></a>数字字面量 Numeric Literals</h1><p>十进制浮点数：没有前缀<br>二进制浮点数：前缀为0b<br>八进制浮点数：前缀为0o<br>十六进制浮点数：前缀为0x</p>
+<p>示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let decimalInteger &#x3D; 17</span><br><span class="line">let binaryInteger &#x3D; 0b10001       &#x2F;&#x2F; 17 in binary notation</span><br><span class="line">let octalInteger &#x3D; 0o21           &#x2F;&#x2F; 17 in octal notation</span><br><span class="line">let hexadecimalInteger &#x3D; 0x11     &#x2F;&#x2F; 17 in hexadecimal notation</span><br></pre></td></tr></table></figure>
+
+<p>十进制浮点数指数：E / e （可选）<br>十六进制浮点数指数：P / p （必须）<br>示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let decimalDouble &#x3D; 12.1875</span><br><span class="line">let exponentDouble &#x3D; 1.21875e1</span><br><span class="line">let hexadecimalDouble &#x3D; 0xC.3p0</span><br></pre></td></tr></table></figure>
+
+<p>无论是整型还是浮点数，都可以加入“0”或者“_”来帮助阅读<br>示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let paddedDouble &#x3D; 000123.456</span><br><span class="line">let oneMillion &#x3D; 1_000_000</span><br><span class="line">let justOverOneMillion &#x3D; 1_000_000.000_000_1</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/07/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -180,7 +389,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-10-07 16:46:07 / 修改时间：16:50:57" itemprop="dateCreated datePublished" datetime="2020-10-07T16:46:07+08:00">2020-10-07</time>
+              <time title="创建时间：2020-10-07 16:46:07 / 修改时间：22:50:54" itemprop="dateCreated datePublished" datetime="2020-10-07T16:46:07+08:00">2020-10-07</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -204,6 +413,7 @@
 
       
           <h1 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h1><p>@private：只能在本类的内部访问<br>@protected：只能在本类或子类中访问<br>@package：只能在当前框架中访问<br>@public：可以在任意地方访问</p>
+<p>真私有的属性：将属性定义在@implementation{}中，外界没有提示</p>
 
       
     </div>
@@ -798,225 +1008,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/11/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E7%B1%BB%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Gaoxiang Zhang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Abnerの技术小栈">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/11/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E7%B1%BB%EF%BC%89/" class="post-title-link" itemprop="url">Objective-C基础入门（类）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-11 18:47:30" itemprop="dateCreated datePublished" datetime="2020-06-11T18:47:30+08:00">2020-06-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-16 22:01:45" itemprop="dateModified" datetime="2020-06-16T22:01:45+08:00">2020-06-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="分离Interface和Implementation文件"><a href="#分离Interface和Implementation文件" class="headerlink" title="分离Interface和Implementation文件"></a>分离Interface和Implementation文件</h1><table>
-<thead>
-<tr>
-<th>section</th>
-<th>文件后缀</th>
-<th>import</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>类申明(@interface section)</td>
-<td>class.h</td>
-<td>import &lt;Foundation/Foundation.h&gt;</td>
-</tr>
-<tr>
-<td>类实施(@implementation section)</td>
-<td>class.m</td>
-<td>import “class.h” (引入local file)</td>
-</tr>
-<tr>
-<td>主程序(main program section)</td>
-<td>main.m</td>
-<td>import “class.h” (只需要@interface就够了)</td>
-</tr>
-</tbody></table>
-<p>可以把 @interface 看作 public information<br>可以把@implementation 看作 private information</p>
-<h1 id="合成访问方法"><a href="#合成访问方法" class="headerlink" title="合成访问方法"></a>合成访问方法</h1><p>自动生成setter和getter方法<br>在interface中申明：@property + 实例变量名<br>在implementation中自动合成：@synthesize + 实例变量名 (现在不需要再申明实例变量了)<br>⚠️ 若在implementation中不使用@synthesize，系统会自动生成带有_的实例变量，如_numerator</p>
-<h1 id="使用点操作符访问属性"><a href="#使用点操作符访问属性" class="headerlink" title="使用点操作符访问属性"></a>使用点操作符访问属性</h1><p>之前学习过访问实例的某个方法如下：<br>[instance property]</p>
-<p>现在也可以用点操作符表示<br>instance.property</p>
-<p>原本的[instance setProperty: value] 等价于 instance.property = value</p>
-<h1 id="多个参数的方法"><a href="#多个参数的方法" class="headerlink" title="多个参数的方法"></a>多个参数的方法</h1><p>@interface</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-(void) setTo: (int) n over: (int) d;</span><br></pre></td></tr></table></figure>
-
-<p>@implementation</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-(void) setTo: (int) n over: (int) d &#123;</span><br><span class="line">    numerator &#x3D; n;</span><br><span class="line">    denominator &#x3D; d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>program section</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[aFraction setTo: 100 over: 200]</span><br></pre></td></tr></table></figure>
-
-<p>无参数名方法：外部参数名都可省略，如：<br><code>- (int) set: (int) n: (int) d;</code><br><code>[aFraction set:1 :3]</code><br>但不推荐，因为这样可读性很差</p>
-<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static关键字声明的变量必须放在implementation外面，或者方法中，如果不为它赋值默认为0，它只在程序开机初始化一次，之后会储存维护一个值</p>
-<p>声明后的static静态变量在其他类中是不能通过类名直接访问的，它的作用域只能是在声明的这个.m文件中</p>
-<p>举例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@implementation MyClass</span><br><span class="line"></span><br><span class="line">+ (void)addCount &#123;</span><br><span class="line">    static NSInteger count &#x3D; 100;</span><br><span class="line">    count ++;</span><br><span class="line">    NSLog(@&quot;static value is %ld&quot;, (long)count);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-
-<p>其输出结果为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2015-12-07 17:41:33.397 StaticDemo[80984:2870442] static value is 101</span><br><span class="line">2015-12-07 17:41:33.398 StaticDemo[80984:2870442] static value is 102</span><br><span class="line">2015-12-07 17:41:33.398 StaticDemo[80984:2870442] static value is 103</span><br><span class="line">2015-12-07 17:41:33.398 StaticDemo[80984:2870442] static value is 104</span><br><span class="line">2015-12-07 17:41:33.398 StaticDemo[80984:2870442] static value is 105</span><br></pre></td></tr></table></figure>
-
-<p>count的值是会变化的，而不是一直输出101</p>
-<h1 id="self-关键字"><a href="#self-关键字" class="headerlink" title="self 关键字"></a>self 关键字</h1><p>本章中未详细介绍，自行百度了相关学习内容：<br><a href="https://www.jianshu.com/p/1adc99ab62c2" target="_blank" rel="noopener">https://www.jianshu.com/p/1adc99ab62c2</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/10/LeetCode.9%20-%20%E5%9B%9E%E6%96%87%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Gaoxiang Zhang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Abnerの技术小栈">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/10/LeetCode.9%20-%20%E5%9B%9E%E6%96%87%E6%95%B0/" class="post-title-link" itemprop="url">LeetCode.9 - 回文数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-10 18:39:49" itemprop="dateCreated datePublished" datetime="2020-06-10T18:39:49+08:00">2020-06-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-15 18:41:36" itemprop="dateModified" datetime="2020-06-15T18:41:36+08:00">2020-06-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B1%82%E8%81%8C/" itemprop="url" rel="index"><span itemprop="name">求职</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
-<p>示例 1:</p>
-<blockquote>
-<p>输入: 121<br>输出: true</p>
-</blockquote>
-<p>示例 2:</p>
-<blockquote>
-<p>输入: -121<br>输出: false<br>解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。</p>
-</blockquote>
-<p>示例 3:</p>
-<blockquote>
-<p>输入: 10<br>输出: false<br>解释: 从右向左读, 为 01 。因此它不是一个回文数。</p>
-</blockquote>
-<p>进阶:</p>
-<blockquote>
-<p>你能不将整数转为字符串来解决这个问题吗？</p>
-</blockquote>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/palindrome-number" target="_blank" rel="noopener">https://leetcode-cn.com/problems/palindrome-number</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>个人思路：将整型数字转为字符串，再逆转字符串后，每个字符一一比较<br>解决方案如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    func isPalindrome(_ x: Int) -&gt; Bool &#123;</span><br><span class="line"></span><br><span class="line">        let number &#x3D; String(x)</span><br><span class="line">        let number_reversed &#x3D; String(number.reversed())</span><br><span class="line">        var isPalindrome &#x3D; true</span><br><span class="line"></span><br><span class="line">        for index in number.indices &#123;</span><br><span class="line">            if (number[index] !&#x3D; number_reversed[index]) &#123;</span><br><span class="line">                isPalindrome &#x3D; false</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return isPalindrome</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>算法问题：虽然能够解决问题，但遍历了整个字符串，时间复杂度为O(n)</p>
-<h1 id="算法优化"><a href="#算法优化" class="headerlink" title="算法优化"></a>算法优化</h1><p>基本思路：将数字本身反转<br>特殊限制：<br>1、数字大小限制：&lt;0的数不满足回文，0到9的数字直接满足回文，&gt;=10的数需有分偶数位和奇数位<br>2、内存限制：int.Max=2^31-1=2147483647-&gt;7463847421，反转整个数字会超过整型内存限制，因此只转一半<br>（对于非负数x，num为偶数位，则迭代终止条件为num=revertedNumber；若x为奇数位，中间的数字转完即结束，因此迭代终止条件为num&lt;revertedNumber）<br>主要思路：<br>1、判断是否转了一半数字（利用上面的迭代终止条件num&lt;=revertedNumber）<br>1、取余拿到最低位<br>2、整除拿到除最低位的其他高位<br>3、revertedNumber原本的位数升一位+最低位<br>4、其他高位变为num<br>5、继续迭代</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    func isPalindrome(_ x: Int) -&gt; Bool &#123;</span><br><span class="line">      var num &#x3D; x;</span><br><span class="line">      var revertedNumber &#x3D; 0;</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F; x 为非负数，或x大于等于10时，最后一位数字为0肯定不是回文</span><br><span class="line">      if (x &lt; 0 || (x &gt;&#x3D; 10 &amp;&amp; x % 10 &#x3D;&#x3D; 0)) &#123;</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F; 数字反转</span><br><span class="line">      while (revertedNumber &lt; num) &#123;</span><br><span class="line">        let onesPlace &#x3D; num % 10;</span><br><span class="line">        let tensPlace &#x3D; num &#x2F; 10;</span><br><span class="line">        revertedNumber &#x3D; revertedNumber * 10 + onesPlace;</span><br><span class="line">        num &#x3D; tensPlace;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      &#x2F;&#x2F; 满足（偶数位相同条件 || 奇数位相同条件）则是回文</span><br><span class="line">      return (num &#x3D;&#x3D; revertedNumber) || (num &#x3D;&#x3D; (revertedNumber &#x2F; 10));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1088,7 +1079,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
