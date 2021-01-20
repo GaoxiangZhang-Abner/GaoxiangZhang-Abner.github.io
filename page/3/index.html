@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Abnerの技术小栈">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Abnerの技术小栈">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Gaoxiang Zhang">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Abnerの技术小栈</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Abnerの技术小栈</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/09/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%89/" class="post-title-link" itemprop="url">Objective-C基础入门（数据类型和表达式）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-09 17:50:21" itemprop="dateCreated datePublished" datetime="2020-06-09T17:50:21+08:00">2020-06-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-10 08:38:44" itemprop="dateModified" datetime="2020-06-10T08:38:44+08:00">2020-06-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="数据类型和常量"><a href="#数据类型和常量" class="headerlink" title="数据类型和常量"></a>数据类型和常量</h1><h2 id="int类型"><a href="#int类型" class="headerlink" title="int类型"></a>int类型</h2><p>有效数字：0，-100，158<br>无效数字：15,000</p>
+<h2 id="float和double类型"><a href="#float和double类型" class="headerlink" title="float和double类型"></a>float和double类型</h2><p>有效数字：3.，125.8，-.001，1.7e4（科学记数法）<br>NSLog打印：%f或%e或%g</p>
+<h2 id="char类型"><a href="#char类型" class="headerlink" title="char类型"></a>char类型</h2><p>有效字符：’a’，’;’，’0’，’\n’<br>NSLog打印：%c</p>
+<h2 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h2><p>long：扩展数字范围；NSLog打印long int用%li<br>long long<br>short：缩小数字范围<br>unsigned：无符号（正数）<br>signed：有符号</p>
+<h2 id="id类型"><a href="#id类型" class="headerlink" title="id类型"></a>id类型</h2><p>泛型，可以存储object的任何类型<br>NSLog打印：%p</p>
+<h1 id="算术表达式"><a href="#算术表达式" class="headerlink" title="算术表达式"></a>算术表达式</h1><h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><p>与其他语言一致：括号和一元减运算符 &gt; 乘除 &gt; 加减</p>
+<h2 id="整数算术"><a href="#整数算术" class="headerlink" title="整数算术"></a>整数算术</h2><p>整数运算也只能获得整数，例：<br>    int a = 25;<br>    int b = 2;<br>    a / b = 12;</p>
+<h2 id="模运算符"><a href="#模运算符" class="headerlink" title="模运算符"></a>模运算符</h2><p>取余运算</p>
+<h2 id="整数和浮点转换"><a href="#整数和浮点转换" class="headerlink" title="整数和浮点转换"></a>整数和浮点转换</h2><p>浮点 -&gt; 整型 ：去尾法，如12.5 - &gt; 12<br>整型 -&gt; 浮点：直接加点和若干个0<br>整数算术有小数：去尾法，如：25 / 2 = 12</p>
+<h2 id="类型转换运算符"><a href="#类型转换运算符" class="headerlink" title="类型转换运算符"></a>类型转换运算符</h2><p>可用于数字类型转换，如：<br>(float) 15 = 15.000000<br>(int) 29.55 = 29</p>
+<p>可用于强制将id类型转为特定类型<br>id myNumber;<br>Fraction *myFraction;<br>myFraction = (Fraction *) myNumber;</p>
+<h1 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h1><p>=可与+，-，*，/，%组合</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/07/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/07/Objective-C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89/" class="post-title-link" itemprop="url">Objective-C基础入门（对象）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-07 09:27:28" itemprop="dateCreated datePublished" datetime="2020-06-07T09:27:28+08:00">2020-06-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-09 17:46:37" itemprop="dateModified" datetime="2020-06-09T17:46:37+08:00">2020-06-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="文件扩展名"><a href="#文件扩展名" class="headerlink" title="文件扩展名"></a>文件扩展名</h1><table>
+<thead>
+<tr>
+<th>扩展</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.c</td>
+<td>C语言源文件</td>
+</tr>
+<tr>
+<td>.cc, .cpp</td>
+<td>C++语言源文件</td>
+</tr>
+<tr>
+<td>.h</td>
+<td>头文件</td>
+</tr>
+<tr>
+<td>.m</td>
+<td>Objective-C源文件</td>
+</tr>
+<tr>
+<td>.mm</td>
+<td>Objective-C++源文件</td>
+</tr>
+<tr>
+<td>.pl</td>
+<td>Perl源文件</td>
+</tr>
+<tr>
+<td>.o</td>
+<td>Object (已编译的) 文件</td>
+</tr>
+</tbody></table>
+<h1 id="基础实例"><a href="#基础实例" class="headerlink" title="基础实例"></a>基础实例</h1><h2 id="导入包-库"><a href="#导入包-库" class="headerlink" title="导入包/库"></a>导入包/库</h2><p>导入Foundation目录下的Foundation.h文件<br><code>import &lt;Foundation/Foundation.h&gt;</code></p>
+<h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><p><code>int main (int argc, const char *argv[]) {</code><br> <code>@autoreleasepool {}</code><br><code>return 0;</code><br><code>}</code></p>
+<h2 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h2><p>打印常量<br>打印 NSString对象 @”Hello, World!”<br><code>NSLog(@&quot;Hello, World!&quot;);</code></p>
+<p>打印变量<br><code>int sum;</code><br><code>sum = 50 +25;</code><br><code>NSLog(@&#39;The sum of 50 and 25 is %i&#39;, sum);</code></p>
+<h1 id="类-对象-方法"><a href="#类-对象-方法" class="headerlink" title="类, 对象, 方法"></a>类, 对象, 方法</h1><p>对象：类的唯一表示<br>实例：类的具体表示<br>方法：在实例上执行的操作</p>
+<p>示例代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Program to work with fractions – class version</span><br><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;---- @interface section ----</span><br><span class="line">@interface Fraction: NSObject</span><br><span class="line">-(void)   print;</span><br><span class="line">-(void)   setNumerator: (int) n;</span><br><span class="line">-(void)   setDenominator: (int) d;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;---- @implementation section ----</span><br><span class="line">@implementation Fraction &#123;</span><br><span class="line">    int  numerator;</span><br><span class="line">    int  denominator;</span><br><span class="line">    </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">-(void) print &#123;   </span><br><span class="line">    NSLog (@&quot;%i&#x2F;%i&quot;, numerator, denominator);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void) setNumerator: (int) n &#123;  </span><br><span class="line">    numerator &#x3D; n; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void) setDenominator: (int) d &#123;  </span><br><span class="line">    denominator &#x3D; d; </span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;---- program section ----</span><br><span class="line">int main (int argc, char * argv[]) &#123;   </span><br><span class="line">    </span><br><span class="line">    @autoreleasepool &#123;      </span><br><span class="line">        Fraction  *myFraction;</span><br><span class="line">        &#x2F;&#x2F; Create an instance of a Fraction</span><br><span class="line">        myFraction &#x3D; [Fraction alloc];      </span><br><span class="line">        myFraction &#x3D; [myFraction init];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; Set fraction to 1&#x2F;3</span><br><span class="line">        [myFraction setNumerator: 1];     </span><br><span class="line">        [myFraction setDenominator: 3];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; Display the fraction using the print method</span><br><span class="line">        NSLog (@&quot;The value of myFraction is:&quot;);    </span><br><span class="line">        [myFraction print];   </span><br><span class="line">    &#125;   </span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="类和方法的申明和调用"><a href="#类和方法的申明和调用" class="headerlink" title="类和方法的申明和调用"></a>类和方法的申明和调用</h2><p>⚠️ OC是大小写敏感的</p>
+<h3 id="1、-interface-section（预申明类和方法）"><a href="#1、-interface-section（预申明类和方法）" class="headerlink" title="1、@interface section（预申明类和方法）"></a>1、@interface section（预申明类和方法）</h3><p>@interface section 描述类和方法<br>一般形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@interface NewClassName: ParentClassName</span><br><span class="line">    propertyAndMethodDeclrations</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@interface Fraction: NSObject</span><br><span class="line">-(void)   print;</span><br><span class="line">-(void)   setNumerator: (int) n;</span><br><span class="line">-(void)   setDenominator: (int) d;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>第一行：申明了一个类Fraction，其父类为NSObject，这个父类在NSObject.h中被定义，此文件被包含在Foundation.h中<br>第二行： - 表示申明了一个实例方法（对类的实例执行的方法），+ 表示申明了一个类方法（对类本身执行的方法）<br>第三行： (void) 表示返回值为空<br>第四行： 申明了一个返回值为空，名叫setDenominator的实例方法，它的参数是d，类型为int<br>第五行：以@end结尾</p>
+<h3 id="2、-implementation-section-（具体申明类和方法）"><a href="#2、-implementation-section-（具体申明类和方法）" class="headerlink" title="2、@implementation section （具体申明类和方法）"></a>2、@implementation section （具体申明类和方法）</h3><p>@implementation section 描述数据和实施interface申明类和方法的实际代码<br>一般形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@implementation NewClassName &#123;</span><br><span class="line">    memberDeclarations;</span><br><span class="line">&#125;</span><br><span class="line">    methodDefinitions;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@implementation Fraction &#123;</span><br><span class="line">    int  numerator;</span><br><span class="line">    int  denominator;</span><br><span class="line">    </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">-(void) print &#123;   </span><br><span class="line">    NSLog (@&quot;%i&#x2F;%i&quot;, numerator, denominator);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void) setNumerator: (int) n &#123;  </span><br><span class="line">    numerator &#x3D; n; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void) setDenominator: (int) d &#123;  </span><br><span class="line">    denominator &#x3D; d; </span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>第一行：类后面的父类可跟，可不跟<br>第二、三行：申明实例变量（实例化一个类时被创建，和实例对应）<br>扩展的函数：在{}申明函数的具体内容<br>最后以@end结尾</p>
+<h3 id="3、program-section-包含执行的程序代码-（实例化类并调用方法）"><a href="#3、program-section-包含执行的程序代码-（实例化类并调用方法）" class="headerlink" title="3、program section 包含执行的程序代码 （实例化类并调用方法）"></a>3、program section 包含执行的程序代码 （实例化类并调用方法）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">int main (int argc, char * argv[]) &#123;   </span><br><span class="line">    </span><br><span class="line">    @autoreleasepool &#123;      </span><br><span class="line">        Fraction  *myFraction;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; Create an instance of a Fraction</span><br><span class="line">        myFraction &#x3D; [Fraction alloc];      </span><br><span class="line">        myFraction &#x3D; [myFraction init];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; Set fraction to 1&#x2F;3</span><br><span class="line">        [myFraction setNumerator: 1];     </span><br><span class="line">        [myFraction setDenominator: 3];</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; Display the fraction using the print method</span><br><span class="line">        NSLog (@&quot;The value of myFraction is:&quot;);    </span><br><span class="line">        [myFraction print];   </span><br><span class="line">    &#125;   </span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="实例化并初始化一个对象方法一"><a href="#实例化并初始化一个对象方法一" class="headerlink" title="实例化并初始化一个对象方法一"></a>实例化并初始化一个对象方法一</h4><p>1、申明一个指针（即存储一个地址）myFraction，指针指向的地址，用于储存Fraction类的值<br><code>Fraction *myFraction;</code></p>
+<p>2、发送消息给Fraction类，分配一个内存空间（将所有实例变量都置零），这里已经实例化完成myFraction<br><code>myFraction = [Fraction alloc];</code></p>
+<p>3、发送消息给myFraction，初始化<br><code>myFraction = [myFraction init];</code></p>
+<h4 id="实例化并初始化一个对象方法二"><a href="#实例化并初始化一个对象方法二" class="headerlink" title="实例化并初始化一个对象方法二"></a>实例化并初始化一个对象方法二</h4><p>合并以上代码<br><code>Fraction *myFraction = [[Fraction alloc] init];</code></p>
+<h4 id="实例化并初始化一个对象方法三"><a href="#实例化并初始化一个对象方法三" class="headerlink" title="实例化并初始化一个对象方法三"></a>实例化并初始化一个对象方法三</h4><p>合并alloc和init<br><code>Fraction *myFraction = [Fraction new];</code></p>
+<h4 id="调用类和方法"><a href="#调用类和方法" class="headerlink" title="调用类和方法"></a>调用类和方法</h4><p>一般形式：<br><code>[ ClassOrInstance method ];</code><br>如: [ yourCar new ];</p>
+<p><code>[ ClassOrInstance method: argument ];</code><br>如: [ yourCar setSpeed: 55 ];</p>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[myFraction setNumerator: 1];     </span><br><span class="line">[myFraction setDenominator: 3];</span><br><span class="line">[myFraction print];</span><br></pre></td></tr></table></figure>
+<p>第一行：向myFraction发送消息setNumerator，参数为1；然后向setNumerator发送消息，参数为1；之后会调用Fraction类的setNumerator方法，此时1存在变量n中，最后将此值存到实例变量numerator中</p>
+<h2 id="基本的访问器方法（setter和getter）"><a href="#基本的访问器方法（setter和getter）" class="headerlink" title="基本的访问器方法（setter和getter）"></a>基本的访问器方法（setter和getter）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@interface Fraction: NSObject</span><br><span class="line">- (void) setNumerator: (int) n;</span><br><span class="line">- (int) numerator;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation Fraction &#123;</span><br><span class="line">    int numerator;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void) setNumerator: (int) n &#123;</span><br><span class="line">    numerator &#x3D; n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (int) numerator &#123;</span><br><span class="line">    return numerator;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/31/%E9%83%A8%E7%BD%B2Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/31/%E9%83%A8%E7%BD%B2Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">部署Hexo遇到的坑</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-31 15:40:29 / 修改时间：15:56:30" itemprop="dateCreated datePublished" datetime="2020-05-31T15:40:29+08:00">2020-05-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h2><p>一定要选择LTS长期支持的稳定版</p>
+<h2 id="安装npm"><a href="#安装npm" class="headerlink" title="安装npm"></a>安装npm</h2><p>Hexo的<br>由于默认的npm镜像在国外，速度感人，甚至会终端长时间无响应，因此需要更换npm镜像源</p>
+<p>一般使用淘宝镜像，办法有两种</p>
+<h3 id="1、创建一个全局新镜像命令"><a href="#1、创建一个全局新镜像命令" class="headerlink" title="1、创建一个全局新镜像命令"></a>1、创建一个全局新镜像命令</h3><p>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>⚠️ 这里有一个坑，在之后Hexo init时，依然使用了原npm，依然会导致安装缓慢</p>
+<h3 id="2、替换原npm镜像配置"><a href="#2、替换原npm镜像配置" class="headerlink" title="2、替换原npm镜像配置"></a>2、替换原npm镜像配置</h3><p>npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>推荐使用此方法</p>
+<h2 id="Hexo-init"><a href="#Hexo-init" class="headerlink" title="Hexo init"></a>Hexo init</h2><p>如果遇到初始化失败，需要删除整个Blog，重新init</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Gaoxiang Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Abnerの技术小栈">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hexo搭建个人博客</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-31 07:23:57 / 修改时间：14:33:53" itemprop="dateCreated datePublished" datetime="2020-05-31T07:23:57+08:00">2020-05-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>欢迎来到 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! 这是我的第一篇博客.<br>Hexo文档 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> .<br>Hexo 问题反馈社区 <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a><br>Hexo github 问题反馈 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="创建一篇新博客"><a href="#创建一篇新博客" class="headerlink" title="创建一篇新博客"></a>创建一篇新博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>更多信息: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="本地运行服务器"><a href="#本地运行服务器" class="headerlink" title="本地运行服务器"></a>本地运行服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>更多信息: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="生成静态文档"><a href="#生成静态文档" class="headerlink" title="生成静态文档"></a>生成静态文档</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>更多信息: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>更多信息: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h3 id="Hexo和Next超实用视频教程"><a href="#Hexo和Next超实用视频教程" class="headerlink" title="Hexo和Next超实用视频教程"></a>Hexo和Next超实用视频教程</h3><p>在这里要感谢搭建CodeSheep和Mackxin的视频教程，帮助我搭建Hexo和使用Next主题<br>搭建Hexo: <a href="https://www.bilibili.com/video/BV1Yb411a7ty" target="_blank" rel="noopener">CodeSheep教程</a><br>使用Next主题: <a href="https://www.bilibili.com/video/BV16W411t7mq?from=search&seid=10693601305278358285" target="_blank" rel="noopener">Mackxin教程</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Gaoxiang Zhang"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Gaoxiang Zhang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/GaoxiangZhang-Abner" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;GaoxiangZhang-Abner" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gaoxiang Zhang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
